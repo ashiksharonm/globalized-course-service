@@ -39,6 +39,9 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
+      - name: Make mvnw executable
+        run: chmod +x mvnw
+
       - name: Run unit tests (no DB required)
         run: ./mvnw test -B
 
@@ -64,6 +67,9 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+
+      - name: Make mvnw executable
+        run: chmod +x mvnw
 
       - name: Run integration tests (Testcontainers spins up real Postgres)
         run: ./mvnw verify -B -P integration-test
