@@ -1,0 +1,27 @@
+{
+    "coursePreview": {
+        "duration": "المدة",
+        "locale": "اللغة",
+        "fallbackNotice": "الترجمة غير متوفرة بلغتك. يتم العرض بالإنجليزية.",
+        "loading": "جارٍ تحميل الدورة...",
+        "error": "فشل في تحميل الدورة. يرجى المحاولة مرة أخرى."
+    },
+    "progress": {
+        "title": "تقدمك",
+        "completed": "{{count}} من {{total}} دروس مكتملة",
+        "percentage": "اكتمل {{percent}}%",
+        "loading": "جارٍ تحميل التقدم...",
+        "error": "فشل في تحميل التقدم.",
+        "record": "وضع علامة مكتمل",
+        "recorded": "تم إكمال الدرس!"
+    },
+    "locale": {
+        "switchLabel": "اللغة",
+        "languages": {
+            "en": "English",
+            "fr": "Français",
+            "ar": "العربية",
+            "ja": "日本語"
+        }
+    }
+}

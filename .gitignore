@@ -1,0 +1,32 @@
+# ── Backend ─────────────────────────────────────────
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Spring Boot generated
+spring.log
+
+# ── Frontend ─────────────────────────────────────────
+globalized-course-ui/node_modules/
+globalized-course-ui/dist/
+globalized-course-ui/.vite/
+globalized-course-ui/coverage/
+
+# ── Environment secrets ───────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── OS ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db

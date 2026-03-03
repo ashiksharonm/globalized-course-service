@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: globalized-course-service
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/coursedb}
+    username: ${DB_USER:courseuser}
+    password: ${DB_PASSWORD:coursepass}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Schema managed by Flyway — never let Hibernate auto-create
+    show-sql: false
+    open-in-view: false   # Avoid implicit lazy loading outside transaction boundaries
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false  # ISO-8601 strings for all OffsetDateTime
+    default-property-inclusion: non_null
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.globallearning: DEBUG
+    org.springframework.web: INFO

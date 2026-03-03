@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    show-sql: false
+
+springdoc:
+  swagger-ui:
+    enabled: false  # Swagger UI disabled in production
+  api-docs:
+    enabled: false
+
+logging:
+  level:
+    root: WARN
+    com.globallearning: INFO

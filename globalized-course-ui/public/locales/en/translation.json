@@ -1,0 +1,27 @@
+{
+    "coursePreview": {
+        "duration": "Duration",
+        "locale": "Language",
+        "fallbackNotice": "Translation not available in your language. Showing English.",
+        "loading": "Loading course...",
+        "error": "Failed to load course. Please try again."
+    },
+    "progress": {
+        "title": "Your Progress",
+        "completed": "{{count}} of {{total}} lessons completed",
+        "percentage": "{{percent}}% complete",
+        "loading": "Loading progress...",
+        "error": "Failed to load progress.",
+        "record": "Mark as complete",
+        "recorded": "Lesson completed!"
+    },
+    "locale": {
+        "switchLabel": "Language",
+        "languages": {
+            "en": "English",
+            "fr": "Français",
+            "ar": "العربية",
+            "ja": "日本語"
+        }
+    }
+}

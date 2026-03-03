@@ -1,0 +1,27 @@
+{
+    "coursePreview": {
+        "duration": "所要時間",
+        "locale": "言語",
+        "fallbackNotice": "このコンテンツはあなたの言語では利用できません。英語で表示しています。",
+        "loading": "コースを読み込んでいます...",
+        "error": "コースの読み込みに失敗しました。再試行してください。"
+    },
+    "progress": {
+        "title": "あなたの進捗",
+        "completed": "{{total}}レッスン中{{count}}レッスン完了",
+        "percentage": "{{percent}}%完了",
+        "loading": "進捗を読み込んでいます...",
+        "error": "進捗の読み込みに失敗しました。",
+        "record": "完了としてマーク",
+        "recorded": "レッスン完了！"
+    },
+    "locale": {
+        "switchLabel": "言語",
+        "languages": {
+            "en": "English",
+            "fr": "Français",
+            "ar": "العربية",
+            "ja": "日本語"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+version: '3.9'
+
+# -------------------------------------------------------------------
+# Globalized Course Preview & Progress Service — Docker Compose
+#
+# Services:
+#   db       - PostgreSQL 16 with health check
+#   backend  - Spring Boot service (waits for db health)
+#   frontend - nginx serving Vite build (proxies /api to backend)
+# -------------------------------------------------------------------
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: coursedb
+    environment:
+      POSTGRES_DB: coursedb
+      POSTGRES_USER: courseuser
+      POSTGRES_PASSWORD: coursepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U courseuser -d coursedb" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./globalized-course-service
+      dockerfile: Dockerfile
+    container_name: course-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://db:5432/coursedb
+      DB_USER: courseuser
+      DB_PASSWORD: coursepass
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -qO- http://localhost:8080/api/v1/actuator/health | grep -q UP || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./globalized-course-ui
+      dockerfile: Dockerfile
+    container_name: course-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  pg_data:

@@ -1,0 +1,27 @@
+{
+    "coursePreview": {
+        "duration": "Durée",
+        "locale": "Langue",
+        "fallbackNotice": "La traduction n'est pas disponible dans votre langue. Affichage en anglais.",
+        "loading": "Chargement du cours...",
+        "error": "Impossible de charger le cours. Veuillez réessayer."
+    },
+    "progress": {
+        "title": "Votre progression",
+        "completed": "{{count}} leçon(s) sur {{total}} terminée(s)",
+        "percentage": "{{percent}}% terminé",
+        "loading": "Chargement de la progression...",
+        "error": "Impossible de charger la progression.",
+        "record": "Marquer comme terminé",
+        "recorded": "Leçon terminée !"
+    },
+    "locale": {
+        "switchLabel": "Langue",
+        "languages": {
+            "en": "English",
+            "fr": "Français",
+            "ar": "العربية",
+            "ja": "日本語"
+        }
+    }
+}
