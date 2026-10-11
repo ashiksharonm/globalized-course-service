@@ -11,7 +11,7 @@ This module provides locale-aware course preview delivery and lesson progress tr
 
 ```
 globalized-course-ui/     React + TypeScript + i18next frontend
-globalized-course-service/ Spring Boot + JPA + PostgreSQL backend
+globalized-course-service/ Spring Boot 3.2 (Java 21) + JPA + PostgreSQL backend
 docker-compose.yml         Full stack local dev
 .github/workflows/ci.yml  GitHub Actions CI pipeline
 ```
@@ -91,7 +91,7 @@ en    → en      (deduplicates)
 null  → en      (safe default)
 ```
 
-**Why in Java, not SQL:** SQL locale string parsing requires dialect-specific functions that break on H2 in tests. The Java approach is unit-testable in <10ms without any DB.
+**Why in Java, not SQL:** SQL locale string parsing requires dialect-specific functions that break on H2 in tests. The Java approach is unit-testable without any DB (plain JUnit, no Spring context).
 
 ### Frontend Locale Flow
 
@@ -138,7 +138,7 @@ Locale JSON files load on demand, not bundled. Initial JS bundle stays small for
 cd globalized-course-service
 ./mvnw test
 
-# Backend — integration tests (requires Docker for Testcontainers)
+# Backend — unit + MockMvc web-layer tests (no Docker needed)
 ./mvnw verify
 
 # Frontend
@@ -168,7 +168,7 @@ npm run lint
 GitHub Actions (`.github/workflows/ci.yml`):
 
 1. **Backend unit tests** — no Docker required
-2. **Backend integration tests** — Testcontainers spins up real Postgres
+2. **Backend web-layer tests** — `@WebMvcTest` MockMvc slice tests run by failsafe (`*IT.java`); no database or Docker
 3. **Frontend typecheck** — `tsc --noEmit` (zero type errors required)
 4. **Frontend lint** — ESLint with zero warnings allowed
 5. **Frontend test** — Jest with coverage report
@@ -185,7 +185,7 @@ Build fails on: test failure, lint errors, type errors.
 | Single Spring Boot app (not microservices) | Complexity constraint. Clean layering provides modularity without Kubernetes overhead. |
 | No Redis/caching | Premature. Add `@Cacheable` on `CoursePreviewService` if load tests show DB latency. |
 | JWT not enforced | Auth delegated to API Gateway / Keycloak. One `@PreAuthorize` annotation adds it. |
-| H2 for unit tests, Testcontainers for IT | H2 is fast for service-layer tests; Testcontainers runs real Postgres for repository tests. |
+| Mocked repositories for service tests | Service-layer tests use Mockito, so they need no database. Testcontainers is declared in the pom but no test uses it yet; there are no repository tests against real Postgres. |
 | i18next over react-intl | Larger ecosystem, lazy loading, simpler API, better for rapid locale expansion. |
 
 ---

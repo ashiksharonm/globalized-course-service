@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoursePreviewCard matches snapshot 1`] = `
+<article
+  class="card"
+  data-testid="course-preview-card"
+>
+  <h1
+    class="title"
+  >
+    Introduction to Machine Learning
+  </h1>
+  <p
+    class="description"
+  >
+    Learn the basics of ML.
+  </p>
+  <dl
+    class="metadata"
+  >
+    <dt>
+      Duration
+    </dt>
+    <dd
+      data-testid="duration"
+    >
+      2h 30min
+    </dd>
+    <dt>
+      Language
+    </dt>
+    <dd
+      data-testid="locale"
+    >
+      en
+    </dd>
+  </dl>
+</article>
+`;

@@ -94,11 +94,11 @@ class CoursePreviewServiceTest {
         @ParameterizedTest
         @CsvSource({
                 "9000,  en, '2h 30min'",
-                "3600,  en, '2h'", // edge: minutes = 0
+                "3600,  en, '1h'", // edge: minutes = 0
                 "1800,  en, '30min'", // edge: hours = 0
                 "9000,  fr, '2h 30min'", // French uses same format
                 "9000,  ja, '2時間30分'", // Japanese locale-specific format
-                "3600,  ja, '2時間'",
+                "3600,  ja, '1時間'",
                 "1800,  ja, '30分'"
         })
         @DisplayName("Formats duration correctly per locale")

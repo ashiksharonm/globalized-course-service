@@ -1,18 +1,16 @@
 # syntax=docker/dockerfile:1
 
 # --- Build stage ---
-FROM eclipse-temurin:21-jdk-alpine AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copy POM and download dependencies first (layer cache optimization)
 COPY pom.xml .
-COPY .mvn/ .mvn/
-COPY mvnw .
-RUN chmod +x mvnw && ./mvnw dependency:go-offline -q
+RUN mvn dependency:go-offline -q
 
 # Copy source and build (skip tests — tests run in CI separately)
 COPY src/ src/
-RUN ./mvnw package -DskipTests -q
+RUN mvn package -DskipTests -q
 
 # --- Runtime stage ---
 FROM eclipse-temurin:21-jre-alpine AS runtime
