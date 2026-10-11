@@ -16,6 +16,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpBackend from 'i18next-http-backend';
+import { IS_DEV } from './env';
 
 i18n
     .use(HttpBackend)
@@ -24,14 +25,14 @@ i18n
     .init({
         fallbackLng: 'en',
         supportedLngs: ['en', 'fr', 'ar', 'ja'],
-        debug: import.meta.env.DEV,
+        debug: IS_DEV,
 
         detection: {
             // Order of sources for language detection
             order: ['localStorage', 'navigator', 'htmlTag'],
             // Key used to persist choice in localStorage
             lookupLocalStorage: 'i18nextLng',
-            cacheUserLanguage: true,
+            caches: ['localStorage'],
         },
 
         backend: {

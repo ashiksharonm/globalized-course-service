@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocaleSwitcher matches snapshot 1`] = `
+<div
+  class="wrapper"
+  data-testid="locale-switcher"
+>
+  <label
+    class="label"
+    for="locale-select"
+  >
+    Language
+  </label>
+  <select
+    aria-label="Language"
+    class="select"
+    id="locale-select"
+  >
+    <option
+      value="en"
+    >
+      English
+    </option>
+    <option
+      value="fr"
+    >
+      Français
+    </option>
+    <option
+      value="ar"
+    >
+      العربية
+    </option>
+    <option
+      value="ja"
+    >
+      日本語
+    </option>
+  </select>
+</div>
+`;

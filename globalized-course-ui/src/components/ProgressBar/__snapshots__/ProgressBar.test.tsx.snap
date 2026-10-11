@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar matches snapshot 1`] = `
+<section
+  class="container"
+  data-testid="progress-section"
+>
+  <h2
+    class="title"
+  >
+    Your Progress
+  </h2>
+  <div
+    aria-label="30% complete — keep going!"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="30"
+    class="bar"
+    role="progressbar"
+  >
+    <div
+      class="fill"
+      data-testid="progress-fill"
+      style="width: 30%;"
+    />
+  </div>
+  <p
+    class="message"
+    data-testid="progress-message"
+  >
+    30% complete — keep going!
+  </p>
+  <p
+    class="counts"
+  >
+    3 of 10 lessons completed
+  </p>
+</section>
+`;
